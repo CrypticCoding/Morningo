@@ -5,8 +5,6 @@ Morningo is an app that will help you get up early in the morning refreshed with
 
 ## Installation
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
-
 
 1) Open Emulator / Your Phone
 2) [Download](https://drive.google.com/file/d/1KWG8TpMNOxiiZZWxbiWCqscgg40P5nFe/view?usp=sharing) The APK
