@@ -1,6 +1,4 @@
 
-![Image of Yaktocat](https://octodex.github.com/images/yaktocat.png)
-
 # Morningo
 
 Morningo is an app that will help you get up early in the morning refreshed without an alarm
