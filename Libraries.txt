@@ -1,0 +1,29 @@
+Library (external): 
+----------
+simple_animations
+animations:package
+Introduction Screen
+flutter_svg (svg image loading)
+flutter_datetime_picker (flutter time)
+getx (state management)
+animations, 
+VelocityX, 
+fl_chart(for chart)
+slider,
+flutter_swipe_action_cell 2.1.0,
+fluent_ui (for desktop version)
+splashscreen: ^1.3.5
+simple_animations
+Liquid Studio (for animations)
+liquid_swipe: ^2.1.0 (Swipe Animations)
+flutter_slideable
+animated_text_kit
+flutter_spinkit 
+flutter_swiper (really important, pro swipe, must)
+flip_card
+floating_text
+Lottie
+Shimmer
+Progress Dialog
+Photo View
+Logger

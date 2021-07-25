@@ -1,0 +1,2 @@
+// For license information, see `https://assets.adobedtm.com/d4d114c60e50/62a01bbd0ef3/aa2e5de1d9d9/RC50b10bd7e69e40d981bdb1894ed041e0-source.js`.
+_satellite.__registerScript('https://assets.adobedtm.com/d4d114c60e50/62a01bbd0ef3/aa2e5de1d9d9/RC50b10bd7e69e40d981bdb1894ed041e0-source.min.js', "_satellite.track(\"trackConsent\");");

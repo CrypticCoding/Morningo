@@ -1,0 +1,372 @@
+start todo ✅
+change time to 12H format ✅
+simple todo generation when done button is clicked 
+
+changing time based on mood ✅
+    
+changing time when you get started (Shared Preferences)
+Reward System
+
+
+✅
+
+Navigator:
+    Navigate to SignIn Page
+        FireBase Setup
+        Google Auth
+
+Remove Lists When Hiitting the done button  ✅
+Make A Scrollable Area where you will generate those Lists  ✅
+
+
+Animated List Coming Up
+
+
+ // Polishing
+Remodel with A Cool UI
+    AppBar
+    Main Body
+Animations
+    Button Animations
+
+Splash Screen  ✅
+  Need more work, basic version done!
+
+
+
+
+
+(Out Of Scope, Next Version)
+Model
+    get the data of how much it takes to change out behaviour step by step (Data of some sort)
+    clean the data
+    train the Model
+    take any other data
+    change of what was required.
+
+Generate an Algorithm based on some things
+
+sync up the variable to sharedpreferences ✅
+read the value when the app starts ✅
+
+change the Algorithm when the mood is neutral ✅
+change the Algorithm when the mood is bad ✅
+if null then run below code, if not then read from global time ✅
+
+
+Read "I am Jarif" to I am Name (Reading The Data)
+
+
+Create Todo: 
+  List of cards and append these unique cards to the List
+  then, on creation, using the card.index you can get those specific
+  cards.
+
+
+
+Setup Page:
+  Basic Information ✅
+  Done Command 
+  Pass The Data to Other Screens
+  
+
+
+
+ ** SUPER IMPORANT **
+
+ final List<Map<String, dynamic>> _cardItem = [
+    {
+      "title": "Home",
+      "icon": Icon(Icons.home),
+      "selected": false,
+    },
+    {
+      "title": "Teams",
+      "icon": Icon(Icons.people),
+      "selected": true,
+    },
+    {
+      "title": "Ideas",
+      "icon": Icon(Icons.lightbulb),
+      "selected": false,
+    }
+];
+
+ListView.builder(
+  itemCount: _menuItem.length,
+  itemBuilder: (context, index) {
+    return ClipRRect(
+      borderRadius: BorderRadius.only(
+        topLeft: Radius.circular(32),
+        bottomLeft: Radius.circular(32),
+      ),
+      child: ListTile(
+        leading: _menuItem[index]['icon'],
+        title: Text(_menuItem[index]['title']),
+        selected: _menuItem[index]['selected'],
+        onTap: () {
+          if (!_menuItem[index]['selected'])
+            changeSelectedMenu(index);
+          },
+      ),
+    );
+ },
+)
+
+
+
+
+
+
+
+
+
+
+
+
+
+ appBar: buildAppBar(context),
+      body: Container(
+        child: Column(
+          children: [
+            Container(
+              alignment: Alignment.topLeft,
+              margin: EdgeInsets.only(top: 70, left: 20, right: 10),
+              child: Text(
+                "Wake Up Time",
+                textScaleFactor: 1.3,
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Container(
+              margin: EdgeInsets.only(left: 10, right: 10),
+              height: 90,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(50),
+                color: Colors.black45,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                      margin: EdgeInsets.only(left: 50),
+                      child: Text(
+                        "$hour : $min $clock",
+                        textScaleFactor: 2.5,
+                      )),
+                  Container(
+                    margin: EdgeInsets.only(right: 20),
+                    child: IconButton(
+                      icon: Icon(Icons.done),
+                      onPressed: () {
+                        _showMoodPanel(context, good, neutral, bad);
+                      },
+                      padding: EdgeInsets.all(10),
+                      splashColor: Colors.white,
+                    ),
+                  )
+                ],
+              ),
+            ),
+            SizedBox(height: 40),
+            Container(
+              margin: EdgeInsets.only(left: 20),
+              alignment: Alignment.topLeft,
+              child: Text(
+                "Todo List",
+                textScaleFactor: 1.3,
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Container(
+              margin: EdgeInsets.fromLTRB(10, 0, 10, 0),
+              child: TodoGenerator(),
+            ),
+            // ignore: todo
+            /// TODO:
+            /// Todo Calculation Goes Here
+            /// Lots Of Crap GOes Here
+            /// Backend Goes here
+            /// Displaying shit goes here!
+          ],
+        ),
+      ),
+
+
+//Important
+
+_showMoodPanel(context, good, neutral, bad); (when you click on the tick button)
+TodoGenerator(), (to generate todo)
+
+
+
+
+
+
+
+
+Container(
+    
+  );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  CARD: ORIGINAL
+
+  return Container(
+            margin: EdgeInsets.only(bottom: 15),
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8.0),
+                color: const Color(0xfff5a36d),
+              ),
+              child: ListTile(
+                dense: true,
+                contentPadding: EdgeInsets.all(15),
+                title: Text(
+                  todos[index],
+                  style: TextStyle(
+                    fontFamily: 'Poppins',
+                    fontSize: 20,
+                    color: const Color(0xfff3eeee),
+                  ),
+                  textAlign: TextAlign.left,
+                ),
+                tileColor: Color(0xfff5a36d),
+                trailing: IconButton(
+                    icon: Icon(Icons.done),
+                    onPressed: () {
+                      TodoController().removeTodo(index);
+                      setState(() {});
+                    }),
+              ),
+            ),
+          );
+        },
+        padding: EdgeInsets.all(14),
+        itemCount: todos.length,
+        scrollDirection: Axis.vertical,
+        shrinkWrap: true,
+        controller: scrollController,
+
+
+  
+
+  
+  
+  class CustomListItem extends StatelessWidget {
+  const CustomListItem({
+    this.thumbnail,
+    this.title,
+    this.user,
+    this.viewCount,
+  });
+
+  final Widget thumbnail;
+  final String title;
+  final String user;
+  final int viewCount;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 5.0),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Expanded(
+            flex: 2,
+            child: thumbnail,
+          ),
+          Expanded(
+            flex: 3,
+            child: _VideoDescription(
+              title: title,
+              user: user,
+              viewCount: viewCount,
+            ),
+          ),
+          const Icon(
+            Icons.more_vert,
+            size: 16.0,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  class TodoCardGenerator extends Widget {
+  Widget type1Card() {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(8.0),
+        color: const Color(0xfff5a36d),
+      ),
+    );
+  }
+
+  Widget type2Card() {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(8.0),
+        color: const Color(0xff45aefe),
+      ),
+    );
+  }
+
+  Widget type3Card() {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(8.0),
+        color: const Color(0xfffc7e7e),
+      ),
+    );
+  }
+
+  TodoCardGenerator() {
+    cards.add(type1Card());
+    cards.add(type2Card());
+    cards.add(type3Card());
+  }
+
+  @override
+  Element createElement() {
+    // TODO: implement createElement
+    throw UnimplementedError();
+  }
+}
