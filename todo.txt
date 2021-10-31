@@ -5,7 +5,16 @@ simple todo generation when done button is clicked
 changing time based on mood ✅
     
 changing time when you get started (Shared Preferences)
-Reward System
+Reward System ✅
+
+Exercise Back Button make it work (Bug Fix) ✅
+
+[***] Recode the whole Navigation System
+
+[***] Use Stream Builder
+
+[***] Morning Star Bug Fix ✅
+[***] Morning Star Radomization 
 
 
 ✅
@@ -20,10 +29,21 @@ Make A Scrollable Area where you will generate those Lists  ✅
 
 
 Animated List Coming Up
+Logo ✅
+Logo Round On Black Background
+
+Problem: Remove Images Accordingly ✅
+
+
+
+[***] Important
+Setup Screen that Guides what the hell is this thing
+Make The Tick Button Activate when the next day comes
+Run The Setup Screen Once.
 
 
  // Polishing
-Remodel with A Cool UI
+Remodel with A Cool UI ✅
     AppBar
     Main Body
 Animations
@@ -41,9 +61,11 @@ Model
     get the data of how much it takes to change out behaviour step by step (Data of some sort)
     clean the data
     train the Model
-    take any other data
-    change of what was required.
-
+    take any other data as Question
+    give the answer
+    test the answer 
+    adjust as nessesary
+    
 Generate an Algorithm based on some things
 
 sync up the variable to sharedpreferences ✅
@@ -54,20 +76,21 @@ change the Algorithm when the mood is bad ✅
 if null then run below code, if not then read from global time ✅
 
 
-Read "I am Jarif" to I am Name (Reading The Data)
+Read "I am Jarif" to I am Name (Reading The Data)✅
+Settings Page see how many times you have done your Exercises
 
 
-Create Todo: 
+Create Todo:  ✅
   List of cards and append these unique cards to the List
   then, on creation, using the card.index you can get those specific
   cards.
 
 
 
-Setup Page:
+Setup Page: ✅✅✅
   Basic Information ✅
-  Done Command 
-  Pass The Data to Other Screens
+  Done Command ✅
+  Pass The Data to Other Screens ✅
   
 
 
@@ -370,3 +393,81 @@ Container(
     throw UnimplementedError();
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+# Setup Page Main (onPressed)
+ InfoGateherer collector = InfoGateherer(
+                      name.text,
+                      int.parse(age.text),
+                      average_fall_asleep_time.text,
+                      sleepTime.text,
+                      wakeTime.text,
+                    );
+                    TodoRouteController()
+                        .navigateHomeWithCollection(context, collector);
+
+
+Navigator.pushNamed(context, '/page2').then((_) => setState(() {}));
+
+THIS ONE WORKS:
+TodoRouteController().naviagationPushNamed(context, 'Meditate');
+ALSO:
+Navigator.of(context)
+                        .pushNamed('/' + todos[index])
+                        .then((_) => setState(() {}));
+  
+
+
+// UPDATING!
+@override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    setState(() {
+      updateListView();
+    });
+  }
+
+
+
+
+
+
+
+
+
+'START',
+                      style: TextStyle(
+                        fontFamily: 'Poppins',
+                        fontSize: 26,
+                        color: const Color(0xffffffff),
+                        fontWeight: FontWeight.w500,
+                      ),
+                      textAlign: TextAlign.left,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+REALLY IMPORTANT VARS:
+$nameOfUser
+$hour : $min $clock

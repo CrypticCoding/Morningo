@@ -1,5 +1,8 @@
 Library (external): 
 ----------
+flutter_staggered_animations: ^1.0.0 (Card Animations)
+flutter_tindercard: ^0.2.0 (for advices)
+expansion_card: ^0.1.0
 simple_animations
 animations:package
 Introduction Screen
@@ -27,3 +30,4 @@ Shimmer
 Progress Dialog
 Photo View
 Logger
+animated_button_bar
