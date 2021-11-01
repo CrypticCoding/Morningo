@@ -33,7 +33,7 @@ class _TodoGeneratorState extends State<TodoGenerator> with RouteAware {
       primary: true,
       itemBuilder: (context, index) {
         return Container(
-          margin: EdgeInsets.only(bottom: 15),
+          margin: EdgeInsets.only(bottom: 7, top: 0),
           child: Container(
             child: Column(
               children: [

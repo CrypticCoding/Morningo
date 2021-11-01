@@ -262,7 +262,7 @@ class _MeditationPageState extends State<MeditationPage> {
                       // _stopWatchTimer.onExecute.add(StopWatchExecute.reset);
                       PageActivity().setActivity("@Meditation", streaks);
 
-                      GlobalMorningStarHandler().callMorningStar();
+                      GlobalMorningStarHandler().callMorningStar(context);
                       setState(() {});
 
                       isEnded = false;

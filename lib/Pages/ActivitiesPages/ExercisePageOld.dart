@@ -270,7 +270,7 @@ class _ExcercisePageOldState extends State<ExcercisePageOld> {
                       streaks += 1;
                       // _stopWatchTimer.onExecute.add(StopWatchExecute.reset);
                       PageActivity().setActivity("@Exercise", streaks);
-                      GlobalMorningStarHandler().callMorningStar();
+                      GlobalMorningStarHandler().callMorningStar(context);
                       isEnded = false;
                     }
                     if (isStarted == true) {

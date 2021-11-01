@@ -1,5 +1,5 @@
-import 'dart:math';
-
+import 'package:flutter/material.dart';
+import 'package:morningo/components/MorningStarPopup.dart';
 import 'package:morningo/components/todoGenerator.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -43,6 +43,8 @@ class GlobalMorningStarHandler {
     globalMorningStar = mornStar + startCount;
     // globalMorningStar = 0;
     prefs.setInt('@morning_star', globalMorningStar);
+
+    // Calling Morning Star Pop Up
   }
 
   // Call this from HomePage
@@ -59,11 +61,17 @@ class GlobalMorningStarHandler {
     return mornStar;
   }
 
-  Future<void> callMorningStar() async {
+  Future<void> callMorningStar(context) async {
     if (TodoController().getAllTodoLenght() == 0) {
       //check ~ ses hoise naki
       //rint("WORKED!");
       setMorningStar(incrementMorningStar);
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return MorningPopUp().openPopup(context, incrementMorningStar);
+        },
+      );
     }
   }
 }

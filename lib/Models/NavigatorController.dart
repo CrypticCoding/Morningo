@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:morningo/Models/BottomNavBarController.dart';
 import 'package:morningo/Models/infoGathering.dart';
-import 'package:morningo/Pages/HomePageAbsoluteNew.dart';
 import 'package:morningo/Pages/HomePage.dart';
 // import 'package:morningo/Pages/HomePageAbsoluteNew.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
 //import 'package:morningo/Pages/HomePage.dart';
-import 'package:morningo/Pages/HomePageNew.dart';
+
 // -- End--
 import 'package:morningo/Pages/NavigatorPages%20(without%20Home)/SettingsPage.dart';
 import 'package:morningo/Pages/SetupPage.dart';
@@ -64,7 +64,8 @@ class _NavigatorControllerState extends State<NavigatorController> {
     return MaterialApp(
       key: UniqueKey(),
       routes: {
-        '/': (context) => HomePage(), // MyNewApp HomePageAbsolute, HomePage
+        '/': (context) =>
+            BottomNavController(), // HomePage, Instead goto  BottomBarPage
         '/splash': (context) => AppSplashScreen(),
         '/setup': (context) => SetupPage(),
         '/sign_in': (context) => SignInPage(),
@@ -73,10 +74,10 @@ class _NavigatorControllerState extends State<NavigatorController> {
         '/Excercise': (context) => ExcercisePageOld(),
         '/Plan': (context) => PlanningPage(),
         '/journal': (context) => JournalPage(),
-        // Navigator Page
-        '/courses': (context) => CoursesPage(),
-        '/leaderboard': (context) => LeaderboardPage(),
-        '/settings': (context) => SettingsPage(),
+        // // Navigator Page
+        // '/courses': (context) => CoursesPage(),
+        // '/leaderboard': (context) => LeaderboardPage(),
+        // '/settings': (context) => SettingsPage(),
       },
       initialRoute: isFirstLaunched ? '/' : '/setup',
     );

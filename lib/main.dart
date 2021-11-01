@@ -1,5 +1,5 @@
 import 'package:flutter/services.dart';
-import 'package:morningo/Models/NavigatorController.dart';
+
 import 'package:flutter/material.dart';
 import 'package:morningo/Pages/Splash_Screen.dart';
 
@@ -29,7 +29,7 @@ void main() {
   ]);
   runApp(
     MaterialApp(
-      theme: ThemeData(fontFamily: 'CaviarDreams'),
+      theme: ThemeData(fontFamily: 'Caviar Dreams'),
       home: AppSplashScreen(),
     ),
   );

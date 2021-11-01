@@ -254,7 +254,7 @@ class _PlanningPageState extends State<PlanningPage> {
                       streaks += 1;
                       // _stopWatchTimer.onExecute.add(StopWatchExecute.reset);
                       PageActivity().setActivity("@Planning", streaks);
-                      GlobalMorningStarHandler().callMorningStar();
+                      GlobalMorningStarHandler().callMorningStar(context);
                       isEnded = false;
                     }
                     if (isStarted == true) {

@@ -1,4 +1,3 @@
-import 'package:adobe_xd/adobe_xd.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 
@@ -76,8 +75,11 @@ class _HomePageState extends State<HomePage> {
 
   // ignore: non_constant_identifier_names
   final Widget no_activities_svg = SvgPicture.asset(
-      'Assets/SVG/undraw_Faq_re_31cw.svg',
-      semanticsLabel: 'Acme Logo');
+    'Assets/SVG/undraw_Faq_re_31cw.svg',
+    semanticsLabel: 'Acme Logo',
+    width: 600,
+    height: 600,
+  );
 
   // ignore: non_constant_identifier_names
   @override
@@ -86,7 +88,7 @@ class _HomePageState extends State<HomePage> {
 
     // Variable Initialization
 
-    setupMorningStars();
+    setupMorningStars(context);
     setupCollections();
     // GlobalMorningStarHandler().setGlobalMorningStarConstant(100);
     setupTime(context);
@@ -113,7 +115,7 @@ class _HomePageState extends State<HomePage> {
     setState(() {});
   }
 
-  void setupMorningStars() async {
+  void setupMorningStars(context) async {
     // ignore: await_only_futures
     GlobalMorningStarHandler().getMorningStar().then((value) {
       if (morningStar == null) morningStar = 0;
@@ -134,15 +136,7 @@ class _HomePageState extends State<HomePage> {
   // ignore: missing_return
   Widget clearAllActivities() {
     // morningStar += 100;
-    return Padding(
-      padding: const EdgeInsets.all(40.0),
-      child: Container(
-        margin: EdgeInsets.only(top: 10),
-        width: 20,
-        height: 20,
-        child: no_activities_svg,
-      ),
-    );
+    return Center(child: no_activities_svg);
   }
 
   @override
@@ -344,45 +338,49 @@ class _HomePageState extends State<HomePage> {
         },
       );
     }
+    // Pop Up Morning Star Goes Here
 
     return SafeArea(
       child: Scaffold(
-        resizeToAvoidBottomInset: false,
-        bottomNavigationBar: ClipRRect(
-          borderRadius: BorderRadius.only(
-            topRight: Radius.circular(28),
-            topLeft: Radius.circular(28),
-          ),
-          child: SizedBox(
-            height: 110,
-            child: BottomNavigationBar(
-              currentIndex: currentIndex_,
-              enableFeedback: true,
-              unselectedItemColor: const Color(0xffdbdbdb),
-              backgroundColor: Colors.white,
-              type: BottomNavigationBarType.fixed,
-              items: [
-                BottomNavigationBarItem(icon: Icon(Icons.school), label: ''),
-                BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
-                BottomNavigationBarItem(icon: Icon(Icons.public), label: ''),
-                BottomNavigationBarItem(icon: Icon(Icons.menu), label: ''),
-              ],
-              selectedItemColor: Color(0xffb0a4fb),
-              showSelectedLabels: false,
-              showUnselectedLabels: false,
-              elevation: 0,
-              onTap: (index) {
-                setState(() {
-                  currentIndex_ = index;
-                  print(currentIndex_);
-                  // if (currentIndex_ == 0) {
-                  //   Navigator.pushNamed(context, '/courses');
-                  // }
-                });
-              },
-            ),
-          ),
-        ),
+        // resizeToAvoidBottomInset: false,
+        // bottomNavigationBar: ClipRRect(
+        //   borderRadius: BorderRadius.only(
+        //     topRight: Radius.circular(28),
+        //     topLeft: Radius.circular(28),
+        //   ),
+        //   child: SizedBox(
+        //     height: 110,
+        //     child: BottomNavigationBar(
+        //       currentIndex: currentIndex_,
+        //       enableFeedback: true,
+        //       unselectedItemColor: const Color(0xffdbdbdb),
+        //       backgroundColor: Colors.white,
+        //       type: BottomNavigationBarType.fixed,
+        //       items: [
+        //         BottomNavigationBarItem(icon: Icon(Icons.school), label: ''),
+        //         BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
+        //         BottomNavigationBarItem(icon: Icon(Icons.public), label: ''),
+        //         BottomNavigationBarItem(icon: Icon(Icons.menu), label: ''),
+        //       ],
+        //       selectedItemColor: Color(0xffb0a4fb),
+        //       showSelectedLabels: false,
+        //       showUnselectedLabels: false,
+        //       elevation: 0,
+        //       onTap: (index) {
+        //         setState(() {
+        //           currentIndex_ = index;
+        //           print(currentIndex_);
+        //           if (currentIndex_ == 0) {
+        //             Navigator.pushNamed(context, '/courses');
+        //           }
+        //           if (currentIndex_ == 1) {
+        //             Navigator.pushNamed(context, '/');
+        //           }
+        //         });
+        //       },
+        //     ),
+        //   ),
+        // ),
         extendBody: true,
         body: Container(
           padding: EdgeInsets.all(20),
@@ -442,6 +440,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   Container(
                     margin: EdgeInsets.only(top: 75, left: 0),
+                    padding: EdgeInsets.only(left: 4),
                     child: Text(
                       '$hour:$min $clock',
                       style: TextStyle(
@@ -453,7 +452,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(top: 160, left: 10),
+                    margin: EdgeInsets.only(top: 140, left: 10),
                     child: Text(
                       'Courses Enrolled / Stats',
                       style: TextStyle(
@@ -465,7 +464,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(top: 190, left: 10),
+                    margin: EdgeInsets.only(top: 175, left: 10),
                     width: 222,
                     height: 104,
                     decoration: BoxDecoration(
@@ -480,11 +479,38 @@ class _HomePageState extends State<HomePage> {
                 heightFactor: 1,
                 child: Container(
                   margin: EdgeInsets.only(top: 17),
-                  child: MaterialButton(
-                    onPressed: () {
+                  child: GestureDetector(
+                    onTap: () {
+                      // HERE PEOPLE WILL NOT RUN IT!
+                      // showDialog(
+                      //   context: context,
+                      //   barrierDismissible: false,
+                      //   builder: (BuildContext context) {
+                      //     return MorningPopUp().openPopup(context, 140);
+                      //   },
+                      // );
                       _showMoodPanel(context, good, neutral, bad);
                     },
-                    child: Text("Wake Up"),
+                    child: Container(
+                      // width: 50,
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(47.0),
+                        border: Border.all(
+                            width: 1.0, color: const Color(0xff404b69)),
+                      ),
+                      child: Text(
+                        'Wake Up',
+                        style: TextStyle(
+                          fontFamily: 'Montserrat',
+                          fontSize: 12,
+                          color: const Color(0xff283149),
+                          fontWeight: FontWeight.w500,
+                        ),
+                        textAlign: TextAlign.left,
+                      ),
+                    ),
                   ),
                 ),
               ),
@@ -507,10 +533,12 @@ class _HomePageState extends State<HomePage> {
                 child: Expanded(
                   flex: 1,
                   child: Scrollbar(
+                    hoverThickness: 0,
+                    thickness: 0,
                     child: Container(
                       width: MediaQuery.of(context).size.width,
-                      height: MediaQuery.of(context).size.height * 0.5,
-                      margin: EdgeInsets.only(top: 1, bottom: 75),
+                      height: MediaQuery.of(context).size.height,
+                      margin: EdgeInsets.only(top: 10, bottom: 0),
                       child: TodoController().getAllTodoLenght() == 0
                           ? clearAllActivities()
                           : TodoGenerator(),
