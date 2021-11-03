@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:morningo/Models/infoGathering.dart';
 import 'package:morningo/Pages/HomePage.dart';
 import 'package:morningo/Pages/NavigatorPages%20(without%20Home)/SettingsPage.dart';
 import 'package:morningo/Pages/NavigatorPages%20(without%20Home)/courses.dart';
@@ -6,19 +7,39 @@ import 'package:morningo/Pages/NavigatorPages%20(without%20Home)/leaderboard.dar
 
 // ignore: must_be_immutable
 class BottomNavController extends StatefulWidget {
+  // ignore: non_constant_identifier_names
+  InfoGateherer gateherer;
+  // New
+  BuildContext contextOf;
+
+  BottomNavController({
+    Key key,
+    this.gateherer,
+    this.contextOf,
+  }) : super(key: key);
   @override
   _BottomNavControllerState createState() => _BottomNavControllerState();
 }
 
 class _BottomNavControllerState extends State<BottomNavController> {
-  // ignore: non_constant_identifier_names
+  List<Widget> screens = [];
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    screens = [
+      CoursesPage(),
+      HomePage(
+        gateherer: widget.gateherer,
+        contextOf: widget.contextOf,
+      ),
+      LeaderboardPage(),
+      SettingsPage(),
+    ];
+  }
+
   var currentIndex_ = 1;
-  List<Widget> screens = [
-    CoursesPage(),
-    HomePage(),
-    LeaderboardPage(),
-    SettingsPage(),
-  ];
 
   @override
   Widget build(BuildContext context) {

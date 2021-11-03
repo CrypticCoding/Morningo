@@ -109,7 +109,11 @@ class TodoRouteController {
       context,
       new MaterialPageRoute(
         builder: (context) {
-          return HomePage(
+          // return HomePage(
+          //   gateherer: collection,
+          //   contextOf: context,
+          // );
+          return BottomNavController(
             gateherer: collection,
             contextOf: context,
           );
