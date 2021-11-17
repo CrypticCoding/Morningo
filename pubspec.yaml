@@ -40,6 +40,7 @@ dependencies:
   google_fonts: ^2.1.0
   flutter_feather_icons: ^2.0.0+1
   rflutter_alert: ^1.0.3
+  flip_card: ^0.6.0
 
 dev_dependencies:
   flutter_test:
