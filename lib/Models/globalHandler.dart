@@ -65,11 +65,11 @@ class GlobalMorningStarHandler {
     if (TodoController().getAllTodoLenght() == 0) {
       //check ~ ses hoise naki
       //rint("WORKED!");
-      setMorningStar(incrementMorningStar);
+      setMorningStar(100);
       showDialog(
         context: context,
         builder: (BuildContext context) {
-          return MorningPopUp().openPopup(context, incrementMorningStar);
+          return MorningPopUp().openPopup(context, 100);
         },
       );
     }

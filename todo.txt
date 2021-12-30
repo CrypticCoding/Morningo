@@ -3,15 +3,30 @@ change time to 12H format ✅
 simple todo generation when done button is clicked 
 
 changing time based on mood ✅
+
+--
+Works for Today:
+--
+Morningo Logo change (Quality Logo)
+Change Time Limit (0.2 Seconds to 10 Mins) ✅
+Morningo Logo AppBuild Change
+Todo Button Reset on close of panel ✅
+
+Morning Star value variation
+Morningo with a capital M name change
+
+
+
+
     
 changing time when you get started (Shared Preferences)
 Reward System ✅
 
 Exercise Back Button make it work (Bug Fix) ✅
 
-[***] Recode the whole Navigation System
+[***] Recode the whole Navigation System ✅
 
-[***] Use Stream Builder
+[***] Use Stream Builder ✅
 
 [***] Morning Star Bug Fix ✅
 [***] Morning Star Radomization 
@@ -44,13 +59,13 @@ Run The Setup Screen Once.
 
  // Polishing
 Remodel with A Cool UI ✅
-    AppBar
-    Main Body
-Animations
+    AppBar ✅
+    Main Body ✅
+Animations 
     Button Animations
 
 Splash Screen  ✅
-  Need more work, basic version done!
+  Need more work, basic version done! ✅
 
 
 
@@ -78,7 +93,7 @@ if null then run below code, if not then read from global time ✅
 
 Read "I am Jarif" to I am Name (Reading The Data)✅
 Settings Page see how many times you have done your Exercises
-
+✅
 
 Create Todo:  ✅
   List of cards and append these unique cards to the List
