@@ -124,3 +124,69 @@ class MorningPopUp {
     );
   }
 }
+
+// NewLine
+class ProblemPopup {
+  Widget openPopup(context, [morningStarAmount]) {
+    return AlertDialog(
+      //title: const Text('Added New Morning Star'),
+      elevation: 0,
+      content: Container(
+        width: MediaQuery.of(context).size.width * 0.35,
+        height: MediaQuery.of(context).size.height * 0.35,
+        child: Column(
+          children: <Widget>[
+            Container(
+              padding: EdgeInsets.all(0),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(23.0),
+                color: const Color(0xffffffff),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Already Done Your  Routine',
+                        style: TextStyle(
+                          fontFamily: 'Apercu',
+                          fontSize: 15,
+                          color: const Color(0xff080c17),
+                          fontWeight: FontWeight.w500,
+                        ),
+                        textAlign: TextAlign.left,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        child: Container(
+                          width: 34,
+                          height: 34,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(
+                                Radius.elliptical(9999.0, 9999.0)),
+                            color: const Color(0xffd04673),
+                          ),
+                          child: Center(
+                              heightFactor: 3,
+                              widthFactor: 3,
+                              child: Icon(
+                                FeatherIcons.xCircle,
+                                color: Colors.white,
+                              )),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

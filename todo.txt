@@ -1,3 +1,15 @@
+
+# TOMMOROW Works ---------- IMPORTANT!!!!! __ !!! __ !!! 
+1. Complete Turning onTap Off and On (DONE) ✅
+2. Depending on its previous time and date ✅
+3. Gather Previous Time Data ✅
+
+
+
+
+
+
+
 start todo ✅
 change time to 12H format ✅
 simple todo generation when done button is clicked 
@@ -486,3 +498,80 @@ Navigator.of(context)
 REALLY IMPORTANT VARS:
 $nameOfUser
 $hour : $min $clock
+
+
+
+
+
+
+----
+Todo:
+----
+[***]
+Already Done your Morning Routine Fix 
+Incorrect Use of ParentDataWidget(NOT NEEDED)
+TitleForScreen -- Change the required parameters to make it work!
+Exercise Page is not Deleting properly
+Remove Exercise Page
+
+Add all the pages (Cycle, Journal, Learning Etc) [***]
+Convert all the (Time Setup Fields) to Time Pickers. 
+Gather all the information, that is required. 
+
+Create Tools Page for HomePage (Tools include Todo or Progress, Mood Tracker, Journal)
+Setup Page; Fall Time; Wake Up Time; Sleep At Night Time, (Make it Selector of Calendar & Time)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ // TextFormField(
+                //   controller: wakeUpController,
+                //   decoration: const InputDecoration(
+                //     icon: Icon(Icons.bed),
+                //     hintText: 'Average Wake Up Time',
+                //     labelText: "Wake Up time",
+                //   ),
+                //   onChanged: (context) {
+                //     wakeTime = context.characters.toString();
+                //   },
+                //   onTap: () async {
+                //     TimeOfDay wakeUpTime = await showTimePicker(
+                //       context: context,
+                //       initialTime: TimeOfDay(
+                //         hour: TimeOfDay.now().hour,
+                //         minute: TimeOfDay.now().minute,
+                //       ),
+                //       confirmText: wakeTime,
+                //     );
+                //     wakeUpController.value = TextEditingValue(text: "4305");
+                //     setState(() {});
+                //   },
+                //   validator: (String value) {
+                //     return (value != null && value.contains('@'))
+                //         ? 'Do not use the @ char.'
+                //         : null;
+                //   },
+                // ),

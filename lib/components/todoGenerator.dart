@@ -3,6 +3,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:morningo/Models/OnboardInformationController.dart';
 
 List<String> todos = [];
 List<String> subtitles = [];
@@ -13,6 +14,8 @@ List<TodoCard> cards = [];
 ScrollController scrollController;
 List<String> placesToGo = [];
 List<Color> colorsOfCard = [];
+
+List<String> selectedCardsTodo = [];
 
 class TodoGenerator extends StatefulWidget {
   @override
@@ -87,32 +90,45 @@ class TodoController {
 }
 
 class TodoGen {
-  void generateTodo() {
+  void generateTodo() async {
     if (todos.length > 0) {
       TodoController().removeAllTodo();
     }
+    selectedCardsTodo =
+        await OnboardController().getCollection("@morning_habits");
+
+    for (var i = 0; i < selectedCardsTodo.length; i++) {
+      TodoController().addTodo(
+        selectedCardsTodo[i],
+        "${selectedCardsTodo[i]} in 10 Minutes",
+        SvgPicture.asset(
+            'Assets/SVG/${selectedCardsTodo[i].toLowerCase()}_guy.svg'),
+        "/${selectedCardsTodo[i]}",
+        Colors.white,
+      );
+    }
 
     // This is where you will add those panes
-    TodoController().addTodo(
-      "Meditate",
-      "Meditation for 10 mins",
-      SvgPicture.asset('Assets/SVG/meditate_guy.svg'),
-      "/Meditate",
-      Color(0xfffba4a4),
-    );
-    TodoController().addTodo(
-        "Excercise",
-        "Excercise for 10 mins",
-        SvgPicture.asset('Assets/SVG/exercise_guy.svg'),
-        "/Excercise",
-        Color(0xffd2a4fb));
-    TodoController().addTodo(
-      "Plan",
-      "Planning for 10 mins",
-      SvgPicture.asset('Assets/SVG/plan_guy.svg'),
-      "/Plan",
-      Color(0xffa4befb),
-    );
+    // TodoController().addTodo(
+    //   "Meditate",
+    //   "Meditation for 10 mins",
+    //   SvgPicture.asset('Assets/SVG/meditate_guy.svg'),
+    //   "/Meditate",
+    //   Color(0xfffba4a4),
+    // );
+    // TodoController().addTodo(
+    //     "Excercise",
+    //     "Excercise for 10 mins",
+    //     SvgPicture.asset('Assets/SVG/exercise_guy.svg'),
+    //     "/Excercise",
+    //     Color(0xffd2a4fb));
+    // TodoController().addTodo(
+    //   "Plan",
+    //   "Planning for 10 mins",
+    //   SvgPicture.asset('Assets/SVG/plan_guy.svg'),
+    //   "/Plan",
+    //   Color(0xffa4befb),
+    // );
 
     // Card Generation
     TodoCardGenerator().generateCard();
@@ -168,7 +184,7 @@ class _TodoCardState extends State<TodoCard> {
       borderOnForeground: true,
       shadowColor: Colors.black87,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(25),
+        borderRadius: BorderRadius.circular(20),
       ),
       margin: EdgeInsets.only(bottom: 0),
       color: widget.colorOfCard,
@@ -187,7 +203,7 @@ class _TodoCardState extends State<TodoCard> {
                   style: TextStyle(
                     fontFamily: 'Caviar Dreams',
                     fontSize: 15,
-                    color: const Color(0xffffffff),
+                    color: Colors.black,
                     fontWeight: FontWeight.w700,
                   ),
                   textAlign: TextAlign.left,
@@ -197,7 +213,7 @@ class _TodoCardState extends State<TodoCard> {
                   style: TextStyle(
                     fontFamily: 'Caviar Dreams',
                     fontSize: 9,
-                    color: const Color(0xa6ffffff),
+                    color: Colors.black,
                   ),
                   textAlign: TextAlign.left,
                 ),

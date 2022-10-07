@@ -1,9 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:morningo/components/MorningStarPopup.dart';
 import 'package:morningo/components/todoGenerator.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class GlobalHandler {
+  void setDate(date) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setString('@current_date', date);
+  }
+
+  // ignore: missing_return
+  Future<String> getDate() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    // ignore: await_only_futures
+    String date = await prefs.getString('@current_date');
+    return date;
+  }
+
+  // TIME --
   void setTime(time) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setString('@current_time', time);
@@ -15,6 +30,22 @@ class GlobalHandler {
     // ignore: await_only_futures
     String time = await prefs.getString('@current_time');
     return time;
+  }
+}
+
+class GlobalDateHandler {
+  // Yesterday : calculateDifference(date) == -1.
+  // Today : calculateDifference(date) == 0.
+  // Tomorrow : calculateDifference(date) == 1.
+  int calculateDifference(String dateString) {
+    DateTime date = DateTime.parse(dateString);
+    var formatter = new DateFormat('yyyy-MM-dd');
+    formatter.format(date);
+    DateTime now = DateTime.now();
+
+    return DateTime(date.year, date.month, date.day)
+        .difference(DateTime(now.year, now.month, now.day))
+        .inDays;
   }
 }
 

@@ -1,25 +1,12 @@
 import 'package:flutter/services.dart';
-
 import 'package:flutter/material.dart';
+import 'package:morningo/Pages/SetupPage.dart';
+
 import 'package:morningo/Pages/Splash_Screen.dart';
-
-/*
-   TODO:
-   1) One Time, On Null showing on Activities other times its not fix it to show only once (DONE)
-   2) Bug Fix: SharedPreference on TodoCard How Many Left, Activities Time 
-   3) Pop UP Box, When Morning Star Adds
-   4) Fucking BUG ABOUT THE DICK BUTTONS NOT WORKING! (DONE) (FIXED)
-
-    //var date = DateTime.now(); 
-  var newDate = DateTime.yesterday(); // get this from the SharedPrefrence,  
-  final difference = date / newDate.difference(date / newDate).inHours;
-  print("Time Differece: ${difference * -1} Hours");
-    
-  if (difference == 0) {
-    print("Time To Change!"); // Unlock Another Wake Up Time
-  }
-
-*/
+import 'package:morningo/Pages/Startup/welcome_page.dart';
+// import 'package:morningo/Pages/Startup/morning_habits.dart';
+// import 'package:morningo/Pages/Startup/why_bring.dart';
+// import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -29,8 +16,8 @@ void main() {
   ]);
   runApp(
     MaterialApp(
-      theme: ThemeData(fontFamily: 'Caviar Dreams'),
-      home: AppSplashScreen(),
+      theme: ThemeData(fontFamily: 'Caviar Dreams'), // Inter
+      home: AppSplashScreen(), // ApplashScreen, NavigationController
     ),
   );
 }

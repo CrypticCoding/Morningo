@@ -1,4 +1,6 @@
+import 'package:duration_picker/duration_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:morningo/Models/NavigatorController.dart';
 import 'package:morningo/Models/infoGathering.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -19,6 +21,9 @@ class _SetupPageState extends State<SetupPage> {
   String sleepTime;
   String wakeTime;
 
+  TextEditingController wakeUpController = new TextEditingController();
+  TextEditingController sleepController = new TextEditingController();
+  TextEditingController fallTimeController = new TextEditingController();
   /*
   by saving a boolean inside shared preferences pub.dev/packages/shared_preferences, 
   it will be null at first, then after the first launch s et it to true, 
@@ -83,46 +88,113 @@ class _SetupPageState extends State<SetupPage> {
                         : null;
                   },
                 ),
-                TextFormField(
-                  decoration: const InputDecoration(
-                    icon: Icon(Icons.lock_clock),
-                    hintText: 'Your Average Fall Asleep Time',
-                    labelText: 'Fall Time',
-                  ),
-                  onChanged: (context) {
-                    average_fall_asleep_time = context.characters.toString();
-                  },
-                  validator: (String value) {
-                    return (value != null && value.contains('@'))
-                        ? 'Do not use the @ char.'
-                        : null;
+                // TextFormField(
+                //   decoration: const InputDecoration(
+                //     icon: Icon(Icons.lock_clock),
+                //     hintText: 'Your Average Fall Asleep Time',
+                //     labelText: 'Fall Time',
+                //   ),
+                //   onChanged: (context) {
+                //     average_fall_asleep_time = context.characters.toString();
+                //   },
+                //   validator: (String value) {
+                //     return (value != null && value.contains('@'))
+                //         ? 'Do not use the @ char.'
+                //         : null;
+                //   },
+                // ),
+                TextField(
+                  controller:
+                      fallTimeController, //editing controller of this TextField
+                  decoration: InputDecoration(
+                      icon: Icon(Icons.lock_clock), //icon of text field
+                      labelText: "Fall Time" //label text of field
+                      ),
+                  readOnly: true,
+                  //set it true, so that user will not able to edit text
+                  onTap: () async {
+                    var resultingDuration = await showDurationPicker(
+                      context: context,
+                      initialTime: Duration(minutes: 30),
+                    );
+
+                    int resultMinute = resultingDuration.inMinutes;
+                    var resultingDurationString = "$resultMinute Minutes";
+                    print(resultingDurationString);
+                    setState(() {
+                      fallTimeController.text = resultingDurationString;
+                      average_fall_asleep_time = resultingDurationString;
+                    });
                   },
                 ),
-                TextFormField(
-                  decoration: const InputDecoration(
-                    icon: Icon(Icons.bed),
-                    hintText: 'Average Wake Up Time',
-                    labelText: 'Wake Up Time *',
-                  ),
-                  onChanged: (context) {
-                    wakeTime = context.characters.toString();
-                  },
-                  validator: (String value) {
-                    return (value != null && value.contains('@'))
-                        ? 'Do not use the @ char.'
-                        : null;
+                TextField(
+                  controller:
+                      wakeUpController, //editing controller of this TextField
+                  decoration: InputDecoration(
+                      icon: Icon(Icons.bed), //icon of text field
+                      labelText:
+                          "Average Time You Wake Up" //label text of field
+                      ),
+                  readOnly: true,
+                  //set it true, so that user will not able to edit text
+                  onTap: () async {
+                    TimeOfDay pickedTime = await showTimePicker(
+                      initialTime: TimeOfDay.now(),
+                      context: context,
+                    );
+
+                    if (pickedTime != null) {
+                      String pickedTimeString = pickedTime.format(context);
+
+                      setState(() {
+                        wakeUpController.text =
+                            pickedTimeString; //set the value of text field.
+                        wakeTime = pickedTimeString;
+                      });
+                    } else {
+                      print("Time is not selected");
+                    }
                   },
                 ),
-                TextFormField(
-                  decoration: const InputDecoration(
-                    icon: Icon(Icons.snooze),
-                    hintText: 'Sleep Time',
-                    labelText: 'When do you goto sleep Night? *',
-                  ),
-                  onChanged: (context) {
-                    sleepTime = context.characters.toString();
+                TextField(
+                  controller:
+                      sleepController, //editing controller of this TextField
+                  decoration: InputDecoration(
+                      icon: Icon(Icons.snooze), //icon of text field
+                      labelText:
+                          "When do you goto sleep Night?" //label text of field
+                      ),
+                  readOnly: true,
+                  //set it true, so that user will not able to edit text
+                  onTap: () async {
+                    TimeOfDay pickedTime = await showTimePicker(
+                      initialTime: TimeOfDay.now(),
+                      context: context,
+                    );
+
+                    if (pickedTime != null) {
+                      String pickedTimeString = pickedTime.format(context);
+
+                      setState(() {
+                        sleepController.text =
+                            pickedTimeString; //set the value of text field.
+                        sleepTime = pickedTimeString;
+                      });
+                    } else {
+                      print("Time is not selected");
+                    }
                   },
                 ),
+                // TextFormField(
+                //   decoration: const InputDecoration(
+                //     icon: Icon(Icons.snooze),
+                //     hintText: 'Sleep Time',
+                //     labelText: 'When do you goto sleep Night? *',
+                //   ),
+                //   onChanged: (context) {
+                //     sleepTime = context.characters.toString();
+                //   },
+                // ),
                 SizedBox(
                   height: 50,
                 ),

@@ -87,7 +87,7 @@ class _PlanningPageState extends State<PlanningPage> {
       streaks = 1;
       setState(() {});
     }
-    streaks = int.parse(streaksString) ?? 1;
+    streaks = int.tryParse(streaksString) ?? 1;
     print(streaks);
     setState(() {});
   }

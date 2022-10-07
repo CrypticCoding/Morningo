@@ -11,27 +11,25 @@ bool isMin = false;
 bool isSec = false;
 var isStarted = true;
 
-class MeditationPage extends StatefulWidget {
-  MeditationPage({Key key}) : super(key: key);
+class RunPage extends StatefulWidget {
   @override
-  _MeditationPageState createState() => _MeditationPageState();
+  _RunPageState createState() => _RunPageState();
 }
 
-class _MeditationPageState extends State<MeditationPage> {
-  final Widget svg = SvgPicture.asset('Assets/SVG/meditate_guy.svg');
+class _RunPageState extends State<RunPage> {
+  final SvgPicture svg = SvgPicture.asset('Assets/SVG/run_guy.svg');
 
-  Color backgroundColorPrimary = const Color(0xffd04673); // Done
-  Color backgroundColorSecondary = const Color(0xffc21227); // Done
-  Color middleLineColor = const Color(0xffec4c73); // Done
-  Color middleBoxColor = const Color(0xffe5345b); // Done
+  Color backgroundColorPrimary = const Color(0xff3fc7ff); // Done
+  Color backgroundColorSecondary = const Color(0xff2a71ff); // Done
+  Color middleLineColor = const Color(0xff4c6cec);
+  Color middleBoxColor = const Color(0xff3169eb);
 
-  String excerciseBenefits =
-      'Spending even a few minutes in meditation can restore your calm and inner peace.Adds Joys to your daily tasks\n';
+  String excerciseBenefits = 'Running helps in your cognition';
 
-  String nameOfActivity = "Meditate";
-  String nameOfActivitySubtitle = "Meditate for 10 mins";
+  String nameOfActivity = "Run";
+  String nameOfActivitySubtitle = "Running for 10 mins";
 
-  String activityName = "Meditation";
+  String activityName = "Running";
 
   final mins = 10;
 
@@ -79,19 +77,17 @@ class _MeditationPageState extends State<MeditationPage> {
     //_stopWatchTimer.setPresetMinuteTime(mins);
   }
 
-  // New Code
   void setupActivity(BuildContext context) async {
     // Print the streaks
     // Show it in the screen!
-    String streaksString =
-        await PageActivity().getActivity("@Meditation") ?? "";
+    String streaksString = await PageActivity().getActivity("@Planning") ?? "";
     if (streaksString == "") {
-      PageActivity().addActivity("@Meditation", 1);
+      PageActivity().addActivity("@Running", 1);
       streaks = 1;
       setState(() {});
     }
     streaks = int.tryParse(streaksString) ?? 1;
-    // print(streaks);
+    print(streaks);
     setState(() {});
   }
 
@@ -130,8 +126,15 @@ class _MeditationPageState extends State<MeditationPage> {
                   color: Colors.white,
                 )),
           ),
-
-          // New Code
+          Container(
+            margin: EdgeInsets.only(top: 35, left: 350),
+            child: IconButton(
+                onPressed: () {},
+                icon: Icon(
+                  Icons.table_rows,
+                  color: Colors.white,
+                )),
+          ),
           Container(
             margin: EdgeInsets.only(top: 210, left: 10),
             child: Text(
@@ -144,15 +147,6 @@ class _MeditationPageState extends State<MeditationPage> {
               ),
               textAlign: TextAlign.left,
             ),
-          ),
-          Container(
-            margin: EdgeInsets.only(top: 35, left: 350),
-            child: IconButton(
-                onPressed: () {},
-                icon: Icon(
-                  Icons.table_rows,
-                  color: Colors.white,
-                )),
           ),
           Container(
             margin: EdgeInsets.only(top: 70),
@@ -186,7 +180,7 @@ class _MeditationPageState extends State<MeditationPage> {
           Container(
             margin: EdgeInsets.only(top: 70, left: 190),
             width: 217.19,
-            height: 266.67,
+            height: 305,
             child: svg,
           ),
           Container(
@@ -248,23 +242,18 @@ class _MeditationPageState extends State<MeditationPage> {
                     //   setState(() {});
                     //   Navigator.pop(context);
                     // }
-
-                    // New Code
                     if (isEnded) {
-                      TodoController().removeSpecificTodo(nameOfActivity);
+                      TodoController().removeSpecificTodo(
+                          nameOfActivity, nameOfActivitySubtitle, svg);
 
-                      // Navigator.pop(context);
                       setState(() {});
                       Navigator.pushNamed(context, '/')
                           .then((value) => setState(() {}));
                       setState(() {});
                       streaks += 1;
                       // _stopWatchTimer.onExecute.add(StopWatchExecute.reset);
-                      PageActivity().setActivity("@Meditation", streaks);
-
+                      PageActivity().setActivity("@Planning", streaks);
                       GlobalMorningStarHandler().callMorningStar(context);
-                      setState(() {});
-
                       isEnded = false;
                     }
                     if (isStarted == true) {

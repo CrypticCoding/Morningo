@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:morningo/Models/BottomNavBarController.dart';
 import 'package:morningo/Models/infoGathering.dart';
+import 'package:morningo/Pages/ActivitiesPages/RunPage.dart';
 import 'package:morningo/Pages/HomePage.dart';
+import 'package:morningo/Pages/Startup/welcome_page.dart';
 // import 'package:morningo/Pages/HomePageAbsoluteNew.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
@@ -21,20 +23,21 @@ import 'package:morningo/Pages/ActivitiesPages/JournalPage.dart';
 import 'package:morningo/Pages/ActivitiesPages/ExercisePageOld.dart';
 
 // Navigator Pages
-import 'package:morningo/Pages/NavigatorPages (without Home)/courses.dart';
-import 'package:morningo/Pages/NavigatorPages (without Home)/leaderboard.dart';
-import 'package:morningo/Pages/NavigatorPages (without Home)/SettingsPage.dart';
+bool isFirstLaunched = false;
 
 class NavigatorController extends StatefulWidget {
   @override
   _NavigatorControllerState createState() => _NavigatorControllerState();
+
+  bool getIsFirstTimeLaunched() {
+    return isFirstLaunched;
+  }
 }
 
 String collection = "";
 
 class _NavigatorControllerState extends State<NavigatorController> {
   BuildContext buildContext;
-  bool isFirstLaunched = false;
 
   bool test = false;
   String initialRouteVar = '/';
@@ -48,6 +51,7 @@ class _NavigatorControllerState extends State<NavigatorController> {
   @override
   void initState() {
     super.initState();
+
     setFirstlaunch();
     setState(() {});
   }
@@ -69,17 +73,22 @@ class _NavigatorControllerState extends State<NavigatorController> {
         '/splash': (context) => AppSplashScreen(),
         '/setup': (context) => SetupPage(),
         '/sign_in': (context) => SignInPage(),
+        '/onboard': (context) => WelcomeScreen(),
+
         // Activities Page
         '/Meditate': (context) => MeditationPage(),
-        '/Excercise': (context) => ExcercisePageOld(),
+        '/Exercise': (context) => ExcercisePageOld(),
         '/Plan': (context) => PlanningPage(),
-        '/journal': (context) => JournalPage(),
+        '/Journal': (context) => JournalPage(),
+        '/Run': (context) => RunPage(),
         // // Navigator Page
         // '/courses': (context) => CoursesPage(),
         // '/leaderboard': (context) => LeaderboardPage(),
         // '/settings': (context) => SettingsPage(),
       },
-      initialRoute: isFirstLaunched ? '/' : '/setup',
+      initialRoute: isFirstLaunched
+          ? '/'
+          : '/onboard', // isFirstLaunched ? '/' : '/onboard' (THIS ONE IS THE RIGHT ONE!)
     );
   }
 }

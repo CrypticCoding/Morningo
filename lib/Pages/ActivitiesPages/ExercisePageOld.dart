@@ -14,6 +14,7 @@ import 'package:stop_watch_timer/stop_watch_timer.dart';
 5) Stop Button needs to have to be connected "SYNCING"
 6) When you are completed, It will have A streaks How Many Times
 7) Per day you wake up, give them streaks, if they wake up at the same time, you calculated
+8) Per Day Calculation. 
 */
 
 bool isEnded = false;
@@ -72,7 +73,7 @@ class _ExcercisePageOldState extends State<ExcercisePageOld> {
       streaks = 1;
       setState(() {});
     }
-    streaks = int.parse(streaksString) ?? 1;
+    streaks = int.tryParse(streaksString) ?? 1;
     // print(streaks);
     setState(() {});
   }
@@ -96,7 +97,7 @@ class _ExcercisePageOldState extends State<ExcercisePageOld> {
     _stopWatchTimer.secondTime.listen((value) {});
     _stopWatchTimer.records.listen((value) {});
     // Set the value of Timer to 10 Mins
-    _stopWatchTimer.setPresetSecondTime(5);
+    _stopWatchTimer.setPresetSecondTime(mins);
     //_stopWatchTimer.setPresetMinuteTime(mins);
   }
 

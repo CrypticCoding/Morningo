@@ -26,7 +26,6 @@ class _BottomNavControllerState extends State<BottomNavController> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     screens = [
       CoursesPage(),
