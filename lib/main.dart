@@ -7,7 +7,7 @@ import 'package:morningo/Pages/Startup/welcome_page.dart';
 // import 'package:morningo/Pages/Startup/morning_habits.dart';
 // import 'package:morningo/Pages/Startup/why_bring.dart';
 // import 'package:shared_preferences/shared_preferences.dart';
-
+//this is veer
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setEnabledSystemUIOverlays([]);
