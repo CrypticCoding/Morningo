@@ -12,7 +12,7 @@ bool isSec = false;
 var isStarted = true;
 
 class MeditationPage extends StatefulWidget {
-  MeditationPage({Key key}) : super(key: key);
+  MeditationPage({Key? key}) : super(key: key);
   @override
   _MeditationPageState createState() => _MeditationPageState();
 }
@@ -285,17 +285,19 @@ class _MeditationPageState extends State<MeditationPage> {
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20)),
                   child: Text(
-                    (() {
-                      if (isEnded == true) {
-                        return "FINISH";
-                      }
-                      if (isStarted) {
-                        return "START";
-                      }
-                      if (!isStarted) {
-                        return "STOP";
-                      }
-                    })(),
+                    "hello world",
+                    // (//() {
+                    //   if (isEnded == true) {
+                    //     return "FINISH";
+                    //   }
+                    //   if (isStarted) {
+                    //     return "START";
+                    //   }
+                    //   if (!isStarted) {
+                    //     return "STOP";
+                    //   }
+                    // })(),
+                    //  ),
                     style: TextStyle(
                       fontFamily: 'Poppins',
                       fontSize: 26,
@@ -314,7 +316,7 @@ class _MeditationPageState extends State<MeditationPage> {
               stream: _stopWatchTimer.rawTime,
               initialData: _stopWatchTimer.rawTime.value,
               builder: (context, snap) {
-                final value = snap.data;
+                final value = snap.data!;
                 final displayTime = StopWatchTimer.getDisplayTime(
                   value,
                   hours: false,

@@ -11,11 +11,11 @@ List<String> subtitles = [];
 List<Widget> svgs = [];
 
 List<TodoCard> cards = [];
-ScrollController scrollController;
+ScrollController? scrollController;
 List<String> placesToGo = [];
 List<Color> colorsOfCard = [];
 
-List<String> selectedCardsTodo = [];
+List<String>? selectedCardsTodo = [];
 
 class TodoGenerator extends StatefulWidget {
   @override
@@ -83,7 +83,7 @@ class TodoController {
     return cards.length;
   }
 
-  void removeSpecificTodo(todo, [subtitle, SvgPicture svg, int index]) async {
+  void removeSpecificTodo(todo, [subtitle, SvgPicture? svg, int? index]) async {
     cards.removeWhere((element) => element.todoName == todo);
     // print(cards);
   }
@@ -97,13 +97,13 @@ class TodoGen {
     selectedCardsTodo =
         await OnboardController().getCollection("@morning_habits");
 
-    for (var i = 0; i < selectedCardsTodo.length; i++) {
+    for (var i = 0; i < selectedCardsTodo!.length; i++) {
       TodoController().addTodo(
-        selectedCardsTodo[i],
-        "${selectedCardsTodo[i]} in 10 Minutes",
+        selectedCardsTodo![i],
+        "${selectedCardsTodo![i]} in 10 Minutes",
         SvgPicture.asset(
-            'Assets/SVG/${selectedCardsTodo[i].toLowerCase()}_guy.svg'),
-        "/${selectedCardsTodo[i]}",
+            'Assets/SVG/${selectedCardsTodo![i].toLowerCase()}_guy.svg'),
+        "/${selectedCardsTodo![i]}",
         Colors.white,
       );
     }
@@ -159,18 +159,18 @@ class TodoCard extends StatefulWidget {
   Widget mascot;
   String placeToGo;
 
-  BuildContext buildContext;
+  BuildContext? buildContext;
 
   var colorOfCard;
 
   TodoCard({
-    Key key,
-    @required this.todoName,
-    @required this.subtitle,
-    @required this.mascot,
-    @required this.placeToGo,
+    Key? key,
+    required this.todoName,
+    required this.subtitle,
+    required this.mascot,
+    required this.placeToGo,
     this.buildContext,
-    @required this.colorOfCard,
+    required this.colorOfCard,
   }) : super(key: key);
   @override
   _TodoCardState createState() => _TodoCardState();

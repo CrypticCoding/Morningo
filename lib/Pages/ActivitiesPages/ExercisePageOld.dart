@@ -17,9 +17,9 @@ import 'package:stop_watch_timer/stop_watch_timer.dart';
 8) Per Day Calculation. 
 */
 
-bool isEnded = false;
-bool isMin = false;
-bool isSec = false;
+bool? isEnded = false;
+bool? isMin = false;
+bool? isSec = false;
 var isStarted = true;
 
 class ExcercisePageOld extends StatefulWidget {
@@ -261,9 +261,9 @@ class _ExcercisePageOldState extends State<ExcercisePageOld> {
                     //   setState(() {});
                     //   Navigator.pop(context);
                     // }
-                    if (isEnded) {
-                      TodoController().removeSpecificTodo(
-                          nameOfActivity, nameOfActivitySubtitle, svg, 0);
+                    if (isEnded != null) {
+                      TodoController().removeSpecificTodo(nameOfActivity,
+                          nameOfActivitySubtitle, svg as SvgPicture?, 0);
                       setState(() {});
                       Navigator.pushNamed(context, '/')
                           .then((value) => setState(() {}));
@@ -292,17 +292,19 @@ class _ExcercisePageOldState extends State<ExcercisePageOld> {
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20)),
                   child: Text(
-                    (() {
-                      if (isEnded == true) {
-                        return "FINISH";
-                      }
-                      if (isStarted) {
-                        return "START";
-                      }
-                      if (!isStarted) {
-                        return "STOP";
-                      }
-                    })(),
+                    "hello world",
+                    // (//() {
+                    //   if (isEnded == true) {
+                    //     return "FINISH";
+                    //   }
+                    //   if (isStarted) {
+                    //     return "START";
+                    //   }
+                    //   if (!isStarted) {
+                    //     return "STOP";
+                    //   }
+                    // })(),
+                    //  )
                     style: TextStyle(
                       fontFamily: 'Poppins',
                       fontSize: 26,
@@ -321,7 +323,7 @@ class _ExcercisePageOldState extends State<ExcercisePageOld> {
               stream: _stopWatchTimer.rawTime,
               initialData: _stopWatchTimer.rawTime.value,
               builder: (context, snap) {
-                final value = snap.data;
+                final value = snap.data!;
                 final displayTime = StopWatchTimer.getDisplayTime(
                   value,
                   hours: false,

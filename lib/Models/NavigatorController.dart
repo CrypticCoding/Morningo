@@ -37,7 +37,7 @@ class NavigatorController extends StatefulWidget {
 String collection = "";
 
 class _NavigatorControllerState extends State<NavigatorController> {
-  BuildContext buildContext;
+  BuildContext? buildContext;
 
   bool test = false;
   String initialRouteVar = '/';
@@ -102,10 +102,10 @@ class InitialNavigationHandler {
     return collection;
   }
 
-  Future<bool> getFirstLaunch() async {
+  Future<bool?> getFirstLaunch() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     // ignore: await_only_futures
-    bool firstLaunch = await prefs.getBool("@firstLaunch");
+    bool? firstLaunch = await prefs.getBool("@firstLaunch");
     print(firstLaunch.toString());
     return firstLaunch;
   }

@@ -2,7 +2,7 @@ import 'package:intl/intl.dart';
 import 'globalHandler.dart';
 
 class Time {
-  GlobalHandler handler;
+  late GlobalHandler handler;
 
   Time() {
     handler = GlobalHandler();
@@ -55,7 +55,7 @@ class Time {
 }
 
 class Date {
-  GlobalHandler handler;
+  late GlobalHandler handler;
 
   Date() {
     handler = GlobalHandler();

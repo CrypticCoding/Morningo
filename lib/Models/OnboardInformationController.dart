@@ -1,7 +1,7 @@
 import 'package:morningo/Models/globalHandler.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-List<String> collection = [];
+List<String>? collection = [];
 
 // TODO: Get Information All; What brings you Morningo,
 // Time he wants to wake up, Time he gets to Sleep,
@@ -13,9 +13,9 @@ List<String> collection = [];
 // bringHere -- for reasons to Join!
 
 class OnboardController {
-  GlobalHandler handler;
+  GlobalHandler? handler;
   //
-  Future<List<String>> getCollection(nameOfCollection) async {
+  Future<List<String>?> getCollection(nameOfCollection) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     // ignore: await_only_futures
     collection = await prefs.getStringList("$nameOfCollection");
@@ -23,8 +23,8 @@ class OnboardController {
     return collection;
   }
 
-  void setCollection(nameOfCollection, List<String> valueOfCollection) async {
+  void setCollection(nameOfCollection, List<String?> valueOfCollection) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setStringList('$nameOfCollection', valueOfCollection);
+    await prefs.setStringList('$nameOfCollection', valueOfCollection as List<String>);
   }
 }

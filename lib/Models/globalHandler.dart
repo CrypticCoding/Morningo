@@ -11,10 +11,10 @@ class GlobalHandler {
   }
 
   // ignore: missing_return
-  Future<String> getDate() async {
+  Future<String?> getDate() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     // ignore: await_only_futures
-    String date = await prefs.getString('@current_date');
+    String? date = await prefs.getString('@current_date');
     return date;
   }
 
@@ -25,10 +25,10 @@ class GlobalHandler {
   }
 
   // ignore: missing_return
-  Future<String> getTime() async {
+  Future<String?> getTime() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     // ignore: await_only_futures
-    String time = await prefs.getString('@current_time');
+    String? time = await prefs.getString('@current_time');
     return time;
   }
 }
@@ -71,7 +71,7 @@ class GlobalMorningStarHandler {
     // // Star Count Randomization
     // var startCountRandom = Random().nextInt(startCount) + 1;
     // startCount = startCountRandom.floor();
-    globalMorningStar = mornStar + startCount;
+    globalMorningStar = mornStar + startCount as int;
     // globalMorningStar = 0;
     prefs.setInt('@morning_star', globalMorningStar);
 
@@ -85,10 +85,10 @@ class GlobalMorningStarHandler {
   }
 
   // ignore: missing_return
-  Future<int> getMorningStar() async {
+  Future<int?> getMorningStar() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     // ignore: await_only_futures
-    int mornStar = await prefs.getInt('@morning_star');
+    int? mornStar = await prefs.getInt('@morning_star');
     return mornStar;
   }
 

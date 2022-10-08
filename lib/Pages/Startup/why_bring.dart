@@ -10,10 +10,10 @@ import 'package:morningo/Pages/Startup/morning_habits.dart';
 
 class Choice {
   const Choice({this.title, this.picture, this.backgroundColor});
-  final String title;
-  final String picture;
+  final String? title;
+  final String? picture;
   // New Input Required
-  final Color backgroundColor;
+  final Color? backgroundColor;
 
   // final Color textColor;
 
@@ -53,22 +53,22 @@ const List<Choice> choices = const <Choice>[
 ];
 
 // selected cards
-List<Choice> selectedCards = <Choice>[];
-List<String> selectedItems = [];
+List<Choice?> selectedCards = <Choice?>[];
+List<String?> selectedItems = [];
 
 int selectedIndex = -1;
 
 // int selectedLists = [1, 2, 3];
 
 class WhyBringHe extends StatefulWidget {
-  const WhyBringHe({Key key}) : super(key: key);
+  const WhyBringHe({Key? key}) : super(key: key);
 
   @override
   State<WhyBringHe> createState() => _WhyBringHeState();
 }
 
 class _WhyBringHeState extends State<WhyBringHe> {
-  List<String> chosenCards = [];
+  List<String>? chosenCards = [];
   @override
   void initState() {
     // TODO: implement initState
@@ -174,8 +174,8 @@ class _WhyBringHeState extends State<WhyBringHe> {
 }
 
 class SelectCard extends StatefulWidget {
-  const SelectCard({Key key, this.choice}) : super(key: key);
-  final Choice choice;
+  const SelectCard({Key? key, this.choice}) : super(key: key);
+  final Choice? choice;
 
   @override
   _SelectCardState createState() => _SelectCardState();
@@ -191,21 +191,21 @@ class _SelectCardState extends State<SelectCard> {
         if (selected == true) {
           selectedCards.remove(widget.choice);
           // Add remove items
-          selectedItems.remove(widget.choice.title);
+          selectedItems.remove(widget.choice!.title);
           selected = false;
         } else if (selected == false) {
           selected = true;
           selectedCards.add(widget.choice);
 
           // Add new items
-          selectedItems.add(widget.choice.title);
+          selectedItems.add(widget.choice!.title);
         }
         print(selectedItems);
         OnboardController().setCollection("@bringHere", selectedItems);
         setState(() {});
       },
       child: Card(
-          color: widget.choice.backgroundColor,
+          color: widget.choice!.backgroundColor,
           elevation: selected ? 30 : 0,
           shape: RoundedRectangleBorder(
             side: BorderSide(color: Colors.transparent, width: 3),
@@ -227,7 +227,7 @@ class _SelectCardState extends State<SelectCard> {
                                 height: 3,
                               ),
                               SvgPicture.asset(
-                                widget.choice.picture,
+                                widget.choice!.picture!,
                                 height: 150,
                               ),
                               SizedBox(
@@ -235,7 +235,7 @@ class _SelectCardState extends State<SelectCard> {
                               ),
                               // Figma Flutter Generator ReducestressWidget - TEXT
                               Text(
-                                widget.choice.title,
+                                widget.choice!.title!,
                                 textAlign: TextAlign.left,
                                 style: TextStyle(
                                   color: Colors.white,

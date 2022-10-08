@@ -8,12 +8,12 @@ import 'package:morningo/Pages/NavigatorPages%20(without%20Home)/leaderboard.dar
 // ignore: must_be_immutable
 class BottomNavController extends StatefulWidget {
   // ignore: non_constant_identifier_names
-  InfoGateherer gateherer;
+  InfoGateherer? gateherer;
   // New
-  BuildContext contextOf;
+  BuildContext? contextOf;
 
   BottomNavController({
-    Key key,
+    Key? key,
     this.gateherer,
     this.contextOf,
   }) : super(key: key);

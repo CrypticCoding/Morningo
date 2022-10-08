@@ -6,11 +6,11 @@ import 'package:morningo/Pages/SetupPage.dart';
 class Choice {
   const Choice(
       {this.title, this.picture, this.backgroundColor, this.titleForScreen});
-  final String title;
-  final String picture;
+  final String? title;
+  final String? picture;
   // New Input Required
-  final Color backgroundColor;
-  final String titleForScreen;
+  final Color? backgroundColor;
+  final String? titleForScreen;
 // final Color textColor;
 
 }
@@ -71,22 +71,22 @@ const List<Choice> choices = const <Choice>[
 ];
 
 // selected cards
-List<Choice> selectedCards = <Choice>[];
-List<String> selectedItems = [];
+List<Choice?> selectedCards = <Choice?>[];
+List<String?> selectedItems = [];
 
 int selectedIndex = -1;
 
 // int selectedLists = [1, 2, 3];
 
 class MorningHabits extends StatefulWidget {
-  const MorningHabits({Key key}) : super(key: key);
+  const MorningHabits({Key? key}) : super(key: key);
 
   @override
   State<MorningHabits> createState() => _MorningHabitsState();
 }
 
 class _MorningHabitsState extends State<MorningHabits> {
-  List<String> chosenCards = [];
+  List<String>? chosenCards = [];
   @override
   void initState() {
     // TODO: implement initState
@@ -177,7 +177,7 @@ class _MorningHabitsState extends State<MorningHabits> {
               onPressed: () {
                 // Get the value from the collection Data
                 collectionGetting();
-                if (chosenCards.length == 0) {
+                if (chosenCards!.length == 0) {
                   final snackBar = SnackBar(
                     content: const Text('Minimum of 1 Habit Is Required'),
                   );
@@ -201,8 +201,8 @@ class _MorningHabitsState extends State<MorningHabits> {
 }
 
 class SelectCard extends StatefulWidget {
-  const SelectCard({Key key, this.choice}) : super(key: key);
-  final Choice choice;
+  const SelectCard({Key? key, this.choice}) : super(key: key);
+  final Choice? choice;
 
   @override
   _SelectCardState createState() => _SelectCardState();
@@ -218,14 +218,14 @@ class _SelectCardState extends State<SelectCard> {
         if (selected == true) {
           selectedCards.remove(widget.choice);
           // Add remove items
-          selectedItems.remove(widget.choice.title);
+          selectedItems.remove(widget.choice!.title);
           selected = false;
         } else if (selected == false) {
           selected = true;
           selectedCards.add(widget.choice);
 
           // Add new items
-          selectedItems.add(widget.choice.title);
+          selectedItems.add(widget.choice!.title);
         }
         print(selectedItems);
         OnboardController().setCollection("@morning_habits", selectedItems);
@@ -253,7 +253,7 @@ class _SelectCardState extends State<SelectCard> {
                                 height: 50,
                               ),
                               SvgPicture.asset(
-                                widget.choice.picture,
+                                widget.choice!.picture!,
                                 height: 120,
                               ),
                               SizedBox(
@@ -261,7 +261,7 @@ class _SelectCardState extends State<SelectCard> {
                               ),
                               // Figma Flutter Generator ReducestressWidget - TEXT
                               Text(
-                                widget.choice.title,
+                                widget.choice!.title!,
                                 textAlign: TextAlign.left,
                                 style: TextStyle(
                                   color: Colors.black,

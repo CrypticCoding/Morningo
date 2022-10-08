@@ -10,7 +10,7 @@ class HomePageAbsolute extends StatefulWidget {
 class _HomePageAbsoluteState extends State<HomePageAbsolute> {
   // ignore: non_constant_identifier_names
   int currentIndex_ = 0;
-  int morningStar;
+  int? morningStar;
 
   @override
   void initState() {

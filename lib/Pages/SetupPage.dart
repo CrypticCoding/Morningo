@@ -14,12 +14,12 @@ class SetupPage extends StatefulWidget {
 }
 
 class _SetupPageState extends State<SetupPage> {
-  String nameOf;
-  String age;
+  String? nameOf;
+  late String age;
   // ignore: non_constant_identifier_names
-  String average_fall_asleep_time;
-  String sleepTime;
-  String wakeTime;
+  String? average_fall_asleep_time;
+  String? sleepTime;
+  String? wakeTime;
 
   TextEditingController wakeUpController = new TextEditingController();
   TextEditingController sleepController = new TextEditingController();
@@ -67,7 +67,7 @@ class _SetupPageState extends State<SetupPage> {
                   onChanged: (context) {
                     nameOf = context.characters.toString();
                   },
-                  validator: (String value) {
+                  validator: (String? value) {
                     return (value != null && value.contains('@'))
                         ? 'Do not use the @ char.'
                         : null;
@@ -82,7 +82,7 @@ class _SetupPageState extends State<SetupPage> {
                   onChanged: (context) {
                     age = context.characters.toString();
                   },
-                  validator: (String value) {
+                  validator: (String? value) {
                     return (value != null && value.contains('@'))
                         ? 'Do not use the @ char.'
                         : null;
@@ -113,10 +113,10 @@ class _SetupPageState extends State<SetupPage> {
                   readOnly: true,
                   //set it true, so that user will not able to edit text
                   onTap: () async {
-                    var resultingDuration = await showDurationPicker(
+                    var resultingDuration = await (showDurationPicker(
                       context: context,
                       initialTime: Duration(minutes: 30),
-                    );
+                    ) as Future<Duration>);
 
                     int resultMinute = resultingDuration.inMinutes;
                     var resultingDurationString = "$resultMinute Minutes";
@@ -138,7 +138,7 @@ class _SetupPageState extends State<SetupPage> {
                   readOnly: true,
                   //set it true, so that user will not able to edit text
                   onTap: () async {
-                    TimeOfDay pickedTime = await showTimePicker(
+                    TimeOfDay? pickedTime = await showTimePicker(
                       initialTime: TimeOfDay.now(),
                       context: context,
                     );
@@ -167,7 +167,7 @@ class _SetupPageState extends State<SetupPage> {
                   readOnly: true,
                   //set it true, so that user will not able to edit text
                   onTap: () async {
-                    TimeOfDay pickedTime = await showTimePicker(
+                    TimeOfDay? pickedTime = await showTimePicker(
                       initialTime: TimeOfDay.now(),
                       context: context,
                     );
@@ -229,7 +229,7 @@ class _SetupPageState extends State<SetupPage> {
 
                       SharedPreferences prefs =
                           await SharedPreferences.getInstance();
-                      await prefs.setString("@collectionName", collector.name);
+                      await prefs.setString("@collectionName", collector.name!);
 
                       prefs.setBool("@firstLaunch", true);
                       TodoRouteController()

@@ -13,7 +13,7 @@ class PageActivity {
   Map<String, dynamic> activities = {};
 
   // ignore: missing_return
-  Future<int> countTimes() async {}
+  Future<int?> countTimes() async {}
   void addActivity(String activityName, dynamic activityAmount) {
     activities[activityName] = activityAmount;
     setActivity(activityName, activityAmount);
@@ -40,10 +40,10 @@ class PageActivity {
   }
 
   // ignore: missing_return
-  Future<String> getActivity(String activityName) async {
+  Future<String?> getActivity(String activityName) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     // ignore: await_only_futures
-    String activity = await prefs.getString('@$activityName');
+    String? activity = await prefs.getString('@$activityName');
     return activity;
   }
 

@@ -274,17 +274,19 @@ class _RunPageState extends State<RunPage> {
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20)),
                   child: Text(
-                    (() {
-                      if (isEnded == true) {
-                        return "FINISH";
-                      }
-                      if (isStarted) {
-                        return "START";
-                      }
-                      if (!isStarted) {
-                        return "STOP";
-                      }
-                    })(),
+                    "hello world",
+                    // (//() {
+                    //   if (isEnded == true) {
+                    //     return "FINISH";
+                    //   }
+                    //   if (isStarted) {
+                    //     return "START";
+                    //   }
+                    //   if (!isStarted) {
+                    //     return "STOP";
+                    //   }
+                    // })(),
+                    //  ),
                     style: TextStyle(
                       fontFamily: 'Poppins',
                       fontSize: 26,
@@ -303,7 +305,7 @@ class _RunPageState extends State<RunPage> {
               stream: _stopWatchTimer.rawTime,
               initialData: _stopWatchTimer.rawTime.value,
               builder: (context, snap) {
-                final value = snap.data;
+                final value = snap.data!;
                 final displayTime = StopWatchTimer.getDisplayTime(
                   value,
                   hours: false,

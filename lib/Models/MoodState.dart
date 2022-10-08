@@ -1,7 +1,7 @@
 class MoodState {
-  bool good;
-  bool neutral;
-  bool bad;
+  bool? good;
+  bool? neutral;
+  bool? bad;
 
   MoodState(bool good, bool neutral, bool bad) {
     this.good = good;

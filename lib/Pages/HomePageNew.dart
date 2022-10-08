@@ -27,7 +27,7 @@ class MyNewApp extends StatefulWidget {
 }
 
 class _MyNewAppState extends State<MyNewApp> {
-  var context;
+  late BuildContext context;
 
   @override
   Widget build(BuildContext context) {
@@ -39,12 +39,12 @@ class _MyNewAppState extends State<MyNewApp> {
 
 // ignore: must_be_immutable
 class Home extends StatefulWidget {
-  InfoGateherer gateherer;
+  InfoGateherer? gateherer;
   // New
-  BuildContext contextOf;
+  BuildContext? contextOf;
 
   Home({
-    Key key,
+    Key? key,
     this.gateherer,
     this.contextOf,
   }) : super(key: key);
@@ -63,17 +63,17 @@ class _HomeState extends State<Home> {
   var clock = "AM";
   // ignore: non_constant_identifier_names
   var currentIndex_ = 1;
-  var morningStar = 0;
+  int? morningStar = 0;
 
   // WIDTH
 
   Time time = Time();
   String globalTime = "";
 
-  MoodState moodState;
+  MoodState? moodState;
   // DateTime dateTime;
   GlobalHandler handler = GlobalHandler();
-  String nameOfUser;
+  String? nameOfUser;
 
   // ignore: non_constant_identifier_names
   final Widget no_activities_svg = SvgPicture.asset(
@@ -100,7 +100,7 @@ class _HomeState extends State<Home> {
 
   void setupCollections() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    String userName = prefs.getString("@collectionName");
+    String? userName = prefs.getString("@collectionName");
     nameOfUser = userName.toString();
     setState(() {});
   }
@@ -151,7 +151,7 @@ class _HomeState extends State<Home> {
       setState(() {
         TodoGen().generateTodo();
 
-        if (moodState.good == true) {
+        if (moodState!.good == true) {
           String initialTime = time.habitTimeSetter(20);
           String initialTimeRefined = initialTime.split(" ")[0];
           hour = int.parse(initialTimeRefined.split(':')[0]);
@@ -160,7 +160,7 @@ class _HomeState extends State<Home> {
           globalTime = "$hour:$min:$clock";
           handler.setTime(globalTime);
         }
-        if (moodState.neutral == true) {
+        if (moodState!.neutral == true) {
           String initialTime = time.moodNeutral(20);
           String initialTimeRefined = initialTime.split(" ")[0];
           hour = int.parse(initialTimeRefined.split(':')[0]);
@@ -169,7 +169,7 @@ class _HomeState extends State<Home> {
           globalTime = "$hour:$min:$clock";
           handler.setTime(globalTime);
         }
-        if (moodState.bad == true) {
+        if (moodState!.bad == true) {
           // Change the algorithm
           String initialTime = time.moodBad(30);
           String initialTimeRefined = initialTime.split(" ")[0];
