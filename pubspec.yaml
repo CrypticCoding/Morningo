@@ -41,8 +41,7 @@ dependencies:
   rflutter_alert: ^1.0.3
   flip_card: ^0.6.0
   flutter_phoenix: ^1.0.0
-  dependencies:
-  duration_picker: "^1.0.0"
+  duration_picker: ^1.0.0
 
 dev_dependencies:
   flutter_test:
